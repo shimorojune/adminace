@@ -1,4 +1,4 @@
-import "./utils/i8next/i8next";
+import "../../utils/i8next/i8next";
 
 export const App = () => {
   // DRAW
