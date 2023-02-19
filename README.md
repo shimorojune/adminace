@@ -1,6 +1,7 @@
 <div align="center">
         <a href="https://adminace.vercel.app" title="adminace">
-            <img src="https://github.com/shimorojune/adminace/blob/master/src/assets/logo/logo-white.png?raw=true" alt="React Hook Form Logo - React hook custom hook for form validation" />
+            <img src="https://github.com/shimorojune/adminace/blob/master/src/assets/logo/logo-white.png?raw=true#gh-dark-mode-only" alt="React Hook Form Logo - React hook custom hook for form validation" />
+            <img src="https://github.com/shimorojune/adminace/blob/master/src/assets/logo/logo.png?raw=true#gh-light-mode-only" alt="React Hook Form Logo - React hook custom hook for form validation" />
         </a>
 </div>
 <br />
