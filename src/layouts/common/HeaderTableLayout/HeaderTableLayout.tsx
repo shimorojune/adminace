@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { Icon } from "@iconify/react";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { ReactElement } from "react";
 import { I8nAndMessageProps } from "types/commonTypes";
@@ -27,18 +27,30 @@ const LayoutHeader = (props: LayoutHeaderProps) => {
   // VARIABLES
   const layoutHeaderTitleString = useTranslatedString(title);
   const createButtonTitleString = useTranslatedString(createButtonProps.title);
+  const exportToCSVButtonTitleString = useTranslatedString({
+    i8nKey: "I18N_EXPORT_TO_CSV",
+  });
 
   // DRAW
   return (
     <div css={styles.layoutHeaderContainer}>
       <span>{layoutHeaderTitleString}</span>
-      <Button
-        startIcon={<Icon icon="material-symbols:add" />}
-        variant="contained"
-        size="medium"
-      >
-        {createButtonTitleString}
-      </Button>
+      <div css={styles.layoutHeaderButtonsContainer}>
+        <Button
+          startIcon={<Icon icon="file-icons:microsoft-excel" />}
+          variant="outlined"
+          size="medium"
+        >
+          {exportToCSVButtonTitleString}
+        </Button>
+        <Button
+          startIcon={<Icon icon="material-symbols:add" />}
+          variant="contained"
+          size="medium"
+        >
+          {createButtonTitleString}
+        </Button>
+      </div>
     </div>
   );
 };
@@ -49,9 +61,52 @@ export const HeaderTableLayout = (props: HeaderTableLayoutProps) => {
 
   // COMPONENT PROPS
   const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 70 },
-    { field: "firstName", headerName: "First name", width: 130 },
-    { field: "lastName", headerName: "Last name", width: 130 },
+    {
+      field: "firstName",
+      headerName: useTranslatedString({ i8nKey: "I18N_SNACK_NAME" }),
+      minWidth: 100,
+      flex: 5,
+    },
+    {
+      field: "lastName",
+      headerName: useTranslatedString({ i8nKey: "I18N_TYPE" }),
+      minWidth: 100,
+      flex: 1,
+    },
+    {
+      field: "id",
+      headerName: useTranslatedString({ i8nKey: "I18N_STOCK_QUANTITY" }),
+      flex: 1,
+      minWidth: 100,
+    },
+    {
+      field: "age",
+      headerName: useTranslatedString({ i8nKey: "I18N_ACTIONS" }),
+      minWidth: 100,
+      flex: 0,
+      renderCell: () => {
+        // DRAW
+        return (
+          <Button
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+            color="secondary"
+            size="small"
+          >
+            Edit
+          </Button>
+          // <IconButton
+          //   onClick={(e) => {
+          //     e.stopPropagation();
+          //   }}
+          //   size="small"
+          // >
+          //   <Icon icon="material-symbols:edit" />
+          // </IconButton>
+        );
+      },
+    },
   ];
   const rows = [
     { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },

@@ -19,6 +19,7 @@ interface SideNavProps {}
 interface SideNavDataItem {
   id: string;
   title: I8nAndMessageProps;
+  selected: boolean;
   iconKey: string;
 }
 
@@ -28,6 +29,7 @@ const sideNavData: SideNavDataItem[] = [
     title: {
       i8nKey: "I18N_SNACKS",
     },
+    selected: true,
     iconKey: "material-symbols:food-bank-rounded",
   },
   {
@@ -35,6 +37,7 @@ const sideNavData: SideNavDataItem[] = [
     title: {
       i8nKey: "I18N_STATIONARY",
     },
+    selected: false,
     iconKey: "mdi:pencil-ruler",
   },
   {
@@ -42,6 +45,7 @@ const sideNavData: SideNavDataItem[] = [
     title: {
       i8nKey: "I18N_ADMIN_PANEL",
     },
+    selected: false,
     iconKey: "material-symbols:admin-panel-settings",
   },
 ];
@@ -57,7 +61,7 @@ const SideNavList = (props: SideNavListProps) => {
     <List>
       {sideNavData.map((sideNavDataItem) => {
         // DATA
-        const { id, title, iconKey } = sideNavDataItem;
+        const { id, title, iconKey, selected } = sideNavDataItem;
 
         // VARIABLES
         const titleString = useTranslatedString(title);
@@ -65,24 +69,19 @@ const SideNavList = (props: SideNavListProps) => {
         // DRAW
         return (
           <ListItem key={id} disablePadding>
-            <Link
+            <ListItemButton
+              component="a"
               href="/dashboard"
-              underline="none"
-              width="100%"
-              color="black"
-              onClick={(
-                event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-              ) => {
-                event.preventDefault();
+              onClick={(e) => {
+                e.preventDefault();
               }}
+              selected={selected}
             >
-              <ListItemButton>
-                <ListItemIcon>
-                  <Icon icon={iconKey} height={30} />
-                </ListItemIcon>
-                <ListItemText primary={titleString} />
-              </ListItemButton>
-            </Link>
+              <ListItemIcon>
+                <Icon icon={iconKey} height={30} />
+              </ListItemIcon>
+              <ListItemText primary={titleString} />
+            </ListItemButton>
           </ListItem>
         );
       })}

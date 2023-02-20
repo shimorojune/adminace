@@ -20,4 +20,11 @@ export default {
       font-size: 20px;
     }
   `,
+  layoutHeaderButtonsContainer: css`
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+  `,
 };

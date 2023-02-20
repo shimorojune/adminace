@@ -57,6 +57,7 @@ export const BottomTabsLayout = (props: BottomTabsLayoutProps) => {
             // DRAW
             return (
               <Tab
+                key={tabTitleString}
                 component="a"
                 href="/dashboard"
                 onClick={(
