@@ -18,15 +18,16 @@ const authRoutes = {
   } as RouteData,
 };
 
-const adminRoutes = {
+const dashboardRoutes = {
   DASHBOARD: {
-    path: "/auth/*",
-    navigatePath: "/auth",
+    path: "/dashboard/*",
+    navigatePath: "/dashboard",
   } as RouteData,
 };
 
 export const routes = {
   ...authRoutes,
+  ...dashboardRoutes,
   FALLBACK: {
     path: "/*",
     navigatePath: "/*",
