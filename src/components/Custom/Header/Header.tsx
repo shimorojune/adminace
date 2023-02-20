@@ -1,8 +1,24 @@
 /** @jsxImportSource @emotion/react */
-import { AppBar } from "@mui/material";
+import {
+  AppBar,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+} from "@mui/material";
+import { changeLanguage } from "i18next";
+import { AppState, updateAppLanguage } from "store/appSlice";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { useTranslatedString } from "utils/hooks/useTranslatedString";
 import styles from "./Header.styles";
 
 export const Header = () => {
+  // HOOKS
+  const dispatch = useAppDispatch();
+
+  // STATE
+  const appLanguage = useAppSelector((state) => state.app.language);
+
   // DRAW
   return (
     <AppBar
@@ -14,6 +30,33 @@ export const Header = () => {
     >
       <div css={styles.container}>
         <span css={styles.logoSpan}>adminace</span>
+        <div css={styles.actionsContainer}>
+          <div css={styles.languageSelectorContainer}>
+            <FormControl fullWidth>
+              <InputLabel id="language-select">
+                {useTranslatedString({ i8nKey: "I18N_LANGUAGE" })}
+              </InputLabel>
+              <Select
+                labelId="language-select"
+                id="language-select-id"
+                value={appLanguage}
+                label={useTranslatedString({ i8nKey: "I18N_LANGUAGE" })}
+                size="small"
+                onChange={(e) => {
+                  dispatch(
+                    updateAppLanguage(e.target.value as AppState["language"])
+                  );
+                  changeLanguage(e.target.value);
+                }}
+              >
+                <MenuItem value={"en" as AppState["language"]}>
+                  English
+                </MenuItem>
+                <MenuItem value={"hi" as AppState["language"]}>Hindi</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
+        </div>
       </div>
     </AppBar>
   );

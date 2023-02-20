@@ -13,4 +13,18 @@ export default {
     font-family: "Poiret One";
     font-size: 36px; // matches the 150px grid column size
   `,
+  actionsContainer: css`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  `,
+  languageSelectorContainer: css`
+    height: 100%;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `,
 };
