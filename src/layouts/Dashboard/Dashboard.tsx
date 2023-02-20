@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { Header } from "components/Custom/Header/Header";
-import { SideNav } from "components/Custom/SideNav/SideNav";
+import { Header } from "layouts/Dashboard/components/Header/Header";
+import { SideNav } from "layouts/Dashboard/components/SideNav/SideNav";
 import { BottomTabsLayout } from "layouts/common/BottomTabsLayout/BottomTabsLayout";
 import { HeaderTableLayout } from "layouts/common/HeaderTableLayout/HeaderTableLayout";
 import styles from "./Dashboard.styles";

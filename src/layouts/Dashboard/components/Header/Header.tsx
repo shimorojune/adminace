@@ -32,7 +32,7 @@ export const Header = () => {
         <span css={styles.logoSpan}>adminace</span>
         <div css={styles.actionsContainer}>
           <div css={styles.languageSelectorContainer}>
-            <FormControl fullWidth>
+            <FormControl fullWidth variant="outlined">
               <InputLabel id="language-select">
                 {useTranslatedString({ i8nKey: "I18N_LANGUAGE" })}
               </InputLabel>
