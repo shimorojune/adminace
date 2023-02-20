@@ -21,9 +21,7 @@ export const App = () => {
   // DRAW
   return (
     <div css={styles.container}>
-      <Routes>
-        <Route path={routes.DASHBOARD.path} element={<Dashboard />} />
-      </Routes>
+      <Dashboard />
     </div>
   );
 };
