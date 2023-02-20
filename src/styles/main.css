@@ -1,0 +1,18 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  font-size: 16px;
+  /* setting as 100% so that in mobile browsers the collapse 
+    of the url bar is blocked - providing a more stable UI */
+  height: 100%;
+}
+
+#root,
+body {
+  /* setting as 100% so that in mobile browsers the collapse 
+    of the url bar is blocked - providing a more stable UI */
+  height: 100%;
+  overflow: hidden;
+}

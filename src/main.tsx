@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Suspense } from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./utils/theme/theme";
+import "./styles/main.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
