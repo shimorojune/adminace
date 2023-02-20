@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 export default {
   container: css`
     width: 100%;
-    height: 60px;
+    height: 100%;
     padding: 0px 10px;
     display: grid;
     grid-template-columns: 150px 1fr;

@@ -5,7 +5,7 @@ import styles from "./Header.styles";
 export const Header = () => {
   // DRAW
   return (
-    <AppBar color="transparent">
+    <AppBar position="static" color="transparent">
       <div css={styles.container}>
         <span css={styles.logoSpan}>adminace</span>
       </div>
