@@ -2,7 +2,7 @@
 import { Route, Routes } from "react-router-dom";
 import "utils/i8next/i8next";
 import { routes } from "utils/routes";
-import { DashboardLayout } from "../Dashboard/Dashboard";
+import { Dashboard } from "../Dashboard/Dashboard";
 import styles from "./App.styles";
 
 export const App = () => {
@@ -10,7 +10,7 @@ export const App = () => {
   return (
     <div css={styles.container}>
       <Routes>
-        <Route path={routes.DASHBOARD.path} element={<DashboardLayout />} />
+        <Route path={routes.DASHBOARD.path} element={<Dashboard />} />
       </Routes>
     </div>
   );

@@ -65,7 +65,17 @@ const SideNavList = (props: SideNavListProps) => {
         // DRAW
         return (
           <ListItem key={id} disablePadding>
-            <Link href="/dashboard" underline="none" width="100%" color="black">
+            <Link
+              href="/dashboard"
+              underline="none"
+              width="100%"
+              color="black"
+              onClick={(
+                event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+              ) => {
+                event.preventDefault();
+              }}
+            >
               <ListItemButton>
                 <ListItemIcon>
                   <Icon icon={iconKey} height={30} />

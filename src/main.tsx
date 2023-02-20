@@ -4,19 +4,20 @@ import { store } from "store/store";
 import { App } from "layouts/App/App";
 import { BrowserRouter } from "react-router-dom";
 import { Suspense } from "react";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { CssBaseline } from "@mui/material";
 import { theme } from "utils/theme/theme";
+import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
 import "styles/main.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
     <Provider store={store}>
       <CssBaseline enableColorScheme />
-      <ThemeProvider theme={theme}>
+      <CssVarsProvider theme={theme}>
         <Suspense fallback="Loading...">
           <App />
         </Suspense>
-      </ThemeProvider>
+      </CssVarsProvider>
     </Provider>
   </BrowserRouter>
 );

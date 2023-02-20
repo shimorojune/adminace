@@ -1,6 +1,6 @@
-import { createTheme } from "@mui/material";
+import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 
-export const theme = createTheme({
+export const theme = extendTheme({
   components: {
     MuiTextField: {
       styleOverrides: {
