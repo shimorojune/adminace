@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { Icon } from "@iconify/react";
-import { Button, IconButton } from "@mui/material";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { ReactElement } from "react";
+import { AppBar, Button, Drawer, Portal, TextField } from "@mui/material";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { ReactElement, useState } from "react";
+import { useForm } from "react-hook-form";
 import { I8nAndMessageProps } from "types/commonTypes";
 import { useTranslatedString } from "utils/hooks/useTranslatedString";
 import styles from "./HeaderTableLayout.styles";
@@ -20,9 +21,67 @@ type LayoutHeaderProps = Pick<
   "createButtonProps" | "title"
 >;
 
+interface CreateObjectDrawerProps {
+  isOpen: boolean;
+  toggle: () => void;
+}
+
+interface CreateObjectForm {
+  objectName: string;
+  objectType: string;
+  objectQuantity: string;
+  objectPrice: string;
+}
+
+const CreateObjectDrawer = (props: CreateObjectDrawerProps) => {
+  // PROPS
+  const { isOpen, toggle } = props;
+
+  // HOOKS
+  const formInstance = useForm<CreateObjectForm>({
+    defaultValues: {
+      objectName: "",
+      objectType: "",
+      objectQuantity: "0",
+      objectPrice: "0",
+    },
+  });
+
+  // DRAW
+  return (
+    <Drawer variant="temporary" anchor="right" open={isOpen} onClose={toggle}>
+      <div css={styles.createObjectDrawerContainer}>
+        <div css={styles.createObjectDrawerHeader}>
+          {useTranslatedString({ i8nKey: "I18N_ADD_SNACK" })}
+        </div>
+        <div css={styles.createObjectDrawerContent}>
+          <TextField
+            id="filled-basic"
+            fullWidth
+            autoFocus
+            label={useTranslatedString({ i8nKey: "I18N_SNACK_NAME" })}
+            variant="filled"
+          />
+        </div>
+        <div css={styles.createObjectDrawerFooter}>
+          <Button variant="outlined" color="error">
+            {useTranslatedString({ i8nKey: "I18N_CANCEL" })}
+          </Button>
+          <Button variant="contained">
+            {useTranslatedString({ i8nKey: "I18N_SAVE" })}
+          </Button>
+        </div>
+      </div>
+    </Drawer>
+  );
+};
+
 const LayoutHeader = (props: LayoutHeaderProps) => {
   // PROPS
   const { createButtonProps, title } = props;
+
+  // STATE
+  const [isCreateDrawerOpen, setIsCreateDrawerOpen] = useState(false);
 
   // VARIABLES
   const layoutHeaderTitleString = useTranslatedString(title);
@@ -30,6 +89,11 @@ const LayoutHeader = (props: LayoutHeaderProps) => {
   const exportToCSVButtonTitleString = useTranslatedString({
     i8nKey: "I18N_EXPORT_TO_CSV",
   });
+
+  // HANDLERS
+  const toggleCreateDrawer = () => {
+    setIsCreateDrawerOpen((state) => !state);
+  };
 
   // DRAW
   return (
@@ -47,10 +111,15 @@ const LayoutHeader = (props: LayoutHeaderProps) => {
           startIcon={<Icon icon="material-symbols:add" />}
           variant="contained"
           size="medium"
+          onClick={toggleCreateDrawer}
         >
           {createButtonTitleString}
         </Button>
       </div>
+      <CreateObjectDrawer
+        isOpen={isCreateDrawerOpen}
+        toggle={toggleCreateDrawer}
+      />
     </div>
   );
 };
@@ -96,14 +165,6 @@ export const HeaderTableLayout = (props: HeaderTableLayoutProps) => {
           >
             Edit
           </Button>
-          // <IconButton
-          //   onClick={(e) => {
-          //     e.stopPropagation();
-          //   }}
-          //   size="small"
-          // >
-          //   <Icon icon="material-symbols:edit" />
-          // </IconButton>
         );
       },
     },
