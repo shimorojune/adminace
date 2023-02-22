@@ -20,7 +20,7 @@ export const BottomTabsLayout = (props: BottomTabsLayoutProps) => {
 
   // DRAW
   return (
-    <div css={styles.container}>
+    <div css={styles.container.style}>
       {tabs.map((tabData, index) => {
         // DATA
         const { content } = tabData;
@@ -37,7 +37,7 @@ export const BottomTabsLayout = (props: BottomTabsLayoutProps) => {
           </div>
         );
       })}
-      <div css={styles.tabsContainer}>
+      <div css={styles.container.children.tabs}>
         <Tabs
           value={0}
           onChange={() => null}
