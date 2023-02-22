@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { Box, Tab, Tabs } from "@mui/material";
 import { ReactElement } from "react";
 import { I8nAndMessageProps } from "types/commonTypes";

@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { Header } from "layouts/Dashboard/components/Header/Header";
 import { SideNav } from "layouts/Dashboard/components/SideNav/SideNav";
 import { BottomTabsLayout } from "layouts/common/BottomTabsLayout/BottomTabsLayout";

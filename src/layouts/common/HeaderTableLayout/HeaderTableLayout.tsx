@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { Icon } from "@iconify/react";
 import { AppBar, Button, Drawer, Portal, TextField } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";

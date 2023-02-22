@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import i18next from "i18next";
 import { Auth } from "layouts/Auth/Auth";
 import { useEffect } from "react";
