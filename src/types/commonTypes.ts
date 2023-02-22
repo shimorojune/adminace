@@ -17,17 +17,3 @@ type Style = {
 };
 
 export type ComponentStyle = Record<string, Style>;
-
-const a = {
-  container: {
-    style: css`
-      width: 100%;
-    `,
-    tableContainer: {
-      style: css`
-        height: 100%;
-      `,
-      rowContainer: {},
-    },
-  },
-} satisfies ComponentStyle;
