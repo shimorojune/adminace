@@ -1,4 +1,4 @@
-import { SerializedStyles } from "@emotion/react";
+import { css, SerializedStyles } from "@emotion/react";
 
 // For text data that needs to be translated
 export interface I8nAndMessageProps {
@@ -11,9 +11,23 @@ export interface I8nAndMessageProps {
 
 type Style = {
   style: SerializedStyles;
-  children?: {
-    [key: string]: Style;
-  };
+  [key: string]:
+    | Omit<SerializedStyles, "map" | "name" | "next" | "styles">
+    | Style;
 };
 
 export type ComponentStyle = Record<string, Style>;
+
+const a = {
+  container: {
+    style: css`
+      width: 100%;
+    `,
+    tableContainer: {
+      style: css`
+        height: 100%;
+      `,
+      rowContainer: {},
+    },
+  },
+} satisfies ComponentStyle;

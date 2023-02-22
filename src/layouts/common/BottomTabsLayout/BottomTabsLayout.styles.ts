@@ -11,13 +11,11 @@ export default {
       grid-template-rows: 1fr 50px;
       gap: 10px;
     `,
-    children: {
-      tabs: {
-        style: css`
-          width: 100%;
-          height: 100%;
-        `,
-      },
+    tabsContainer: {
+      style: css`
+        width: 100%;
+        height: 100%;
+      `,
     },
   },
 } satisfies ComponentStyle;

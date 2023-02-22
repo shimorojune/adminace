@@ -50,11 +50,11 @@ const CreateObjectDrawer = (props: CreateObjectDrawerProps) => {
   // DRAW
   return (
     <Drawer variant="temporary" anchor="right" open={isOpen} onClose={toggle}>
-      <div css={styles.createObjectDrawerContainer}>
-        <div css={styles.createObjectDrawerHeader}>
+      <div css={styles.container.createObjectDrawerContainer.style}>
+        <div css={styles.container.createObjectDrawerContainer.drawerHeader}>
           {useTranslatedString({ i8nKey: "I18N_ADD_SNACK" })}
         </div>
-        <div css={styles.createObjectDrawerContent}>
+        <div css={styles.container.createObjectDrawerContainer.drawerContent}>
           <TextField
             id="filled-basic"
             fullWidth
@@ -63,7 +63,7 @@ const CreateObjectDrawer = (props: CreateObjectDrawerProps) => {
             variant="filled"
           />
         </div>
-        <div css={styles.createObjectDrawerFooter}>
+        <div css={styles.container.createObjectDrawerContainer.drawerFooter}>
           <Button variant="outlined" color="error">
             {useTranslatedString({ i8nKey: "I18N_CANCEL" })}
           </Button>
@@ -97,9 +97,9 @@ const LayoutHeader = (props: LayoutHeaderProps) => {
 
   // DRAW
   return (
-    <div css={styles.layoutHeaderContainer}>
+    <div css={styles.container.layoutHeaderContainer.style}>
       <span>{layoutHeaderTitleString}</span>
-      <div css={styles.layoutHeaderButtonsContainer}>
+      <div css={styles.container.layoutHeaderContainer.buttonsContainer.style}>
         <Button
           startIcon={<Icon icon="file-icons:microsoft-excel" />}
           variant="outlined"
@@ -183,7 +183,7 @@ export const HeaderTableLayout = (props: HeaderTableLayoutProps) => {
 
   // DRAW
   return (
-    <div css={styles.container}>
+    <div css={styles.container.style}>
       <LayoutHeader createButtonProps={createButtonProps} title={title} />
       <DataGrid
         rows={rows}

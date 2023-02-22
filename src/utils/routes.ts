@@ -11,29 +11,21 @@ interface RouteData {
   navigatePath: string;
 }
 
-const authRoutes = {
+export const routes = {
   AUTH: {
     path: "/auth/*",
     navigatePath: "/auth",
-  } as RouteData,
-};
-
-const dashboardRoutes = {
+  },
   DASHBOARD: {
     path: "/dashboard/*",
     navigatePath: "/dashboard",
-  } as RouteData,
-};
-
-export const routes = {
-  ...authRoutes,
-  ...dashboardRoutes,
+  },
   FALLBACK: {
     path: "/*",
     navigatePath: "/*",
-  } as RouteData,
+  },
   NOT_FOUND: {
     path: "/notfound",
     navigatePath: "/notfound",
-  } as RouteData,
-};
+  },
+} satisfies Record<string, RouteData>;

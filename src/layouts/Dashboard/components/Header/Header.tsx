@@ -28,10 +28,14 @@ export const Header = () => {
         zIndex: 100,
       }}
     >
-      <div css={styles.container}>
-        <span css={styles.logoSpan}>adminace</span>
-        <div css={styles.actionsContainer}>
-          <div css={styles.languageSelectorContainer}>
+      <div css={styles.container.style}>
+        <span css={styles.container.logoSpan.style}>adminace</span>
+        <div css={styles.container.actionsContainer.style}>
+          <div
+            css={
+              styles.container.actionsContainer.languageSelectorContainer.style
+            }
+          >
             <FormControl fullWidth variant="outlined">
               <InputLabel id="language-select">
                 {useTranslatedString({ i8nKey: "I18N_LANGUAGE" })}

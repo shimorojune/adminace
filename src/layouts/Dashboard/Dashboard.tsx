@@ -8,11 +8,11 @@ import styles from "./Dashboard.styles";
 export const Dashboard = () => {
   // DRAW
   return (
-    <div css={styles.container}>
+    <div css={styles.container.style}>
       <Header />
-      <div css={styles.contentContainer}>
+      <div css={styles.container.contentContainer.style}>
         <SideNav />
-        <div css={styles.content}>
+        <div css={styles.container.contentContainer.content.style}>
           <BottomTabsLayout
             tabs={[
               {

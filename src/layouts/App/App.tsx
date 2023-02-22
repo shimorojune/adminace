@@ -23,6 +23,7 @@ export const App = () => {
     <div css={styles.container}>
       <Routes>
         <Route path={routes.DASHBOARD.path} element={<Dashboard />} />
+        <Route path={routes.AUTH.path} element={<Dashboard />} />
       </Routes>
     </div>
   );

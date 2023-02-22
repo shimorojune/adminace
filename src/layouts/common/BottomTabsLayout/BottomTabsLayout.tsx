@@ -37,7 +37,7 @@ export const BottomTabsLayout = (props: BottomTabsLayoutProps) => {
           </div>
         );
       })}
-      <div css={styles.container.children.tabs}>
+      <div css={styles.container.tabsContainer.style}>
         <Tabs
           value={0}
           onChange={() => null}
