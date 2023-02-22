@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import i18next from "i18next";
+import { Auth } from "layouts/Auth/Auth";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AppState, updateAppLanguage } from "store/appSlice";
@@ -23,7 +24,7 @@ export const App = () => {
     <div css={styles.container}>
       <Routes>
         <Route path={routes.DASHBOARD.path} element={<Dashboard />} />
-        <Route path={routes.AUTH.path} element={<Dashboard />} />
+        <Route path={routes.AUTH.path} element={<Auth />} />
       </Routes>
     </div>
   );
