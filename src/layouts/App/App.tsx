@@ -26,6 +26,9 @@ export const App = () => {
   const onAuthStateChangedHandler = (user: User | null) => {
     if (!!user) {
       setIsAppLoaded(true);
+      navigate(routes.DASHBOARD.navigatePath, {
+        replace: true,
+      });
     } else {
       navigate(routes.AUTH.navigatePath, {
         replace: true,
