@@ -15,6 +15,11 @@ export const App = () => {
 
   // EFFECTS
   useEffect(() => {
+    /**
+     * Even if the language memory in local-storage is managed by i18next,
+     * the app is not aware of the language until the store is updated
+     * (eg. The langugage selector dropdown)
+     */
     dispatch(updateAppLanguage(i18next.language as AppState["language"]));
   }, []);
 
