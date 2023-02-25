@@ -17,8 +17,8 @@ export const routes = {
     navigatePath: "/auth",
   },
   DASHBOARD: {
-    path: "/dashboard/*",
-    navigatePath: "/dashboard",
+    path: "/*",
+    navigatePath: "/",
   },
   FALLBACK: {
     path: "/*",
