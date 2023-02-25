@@ -7,8 +7,9 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "store/store";
-import "styles/main.css";
 import { theme } from "utils/theme/theme";
+import "./services/firebase/firebase";
+import "styles/main.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>

@@ -11,3 +11,7 @@
 | ---------- | ------------------------------------------------------------------ |
 | Staging    | [adminace-staging.vercel.app](https://adminace-staging.vercel.app) |
 | Production | [adminace.vercel.app](https://adminace.vercel.app)                 |
+
+# Tips:
+
+- If the development build fails with a **504 (GATEWAY_TIMEOUT)** error, it is a known VITE issue and the solution can be found [here](https://github.com/vitejs/vite/discussions/8146).

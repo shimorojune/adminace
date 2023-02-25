@@ -15,7 +15,7 @@
     "@mui/material": "^5.11.9",
     "@mui/x-data-grid": "^5.17.24",
     "@reduxjs/toolkit": "^1.9.2",
-    "@supabase/supabase-js": "^2.7.1",
+    "firebase": "^9.17.1",
     "framer-motion": "^9.0.2",
     "i18next": "^22.4.9",
     "i18next-browser-languagedetector": "^7.0.1",
