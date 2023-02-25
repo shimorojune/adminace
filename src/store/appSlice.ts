@@ -13,7 +13,6 @@ const initialState: AppState = {
 
 export const appSlice = createSlice({
   name: "app",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     updateAppLanguage: (state, action: PayloadAction<AppState["language"]>) => {
@@ -23,8 +22,4 @@ export const appSlice = createSlice({
 });
 
 export const { updateAppLanguage } = appSlice.actions;
-
-// // Other code such as selectors can use the imported `RootState` type
-// export const selectCount = (state: RootState) => state.app.language;
-
 export default appSlice.reducer;
