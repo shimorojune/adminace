@@ -1,6 +1,11 @@
-import styles from "./Auth.styles";
+import { LoginPage } from "pages/Auth/LoginPage/LoginPage";
+import { Route, Routes } from "react-router-dom";
 
 export const Auth = () => {
   // DRAW
-  return <div css={styles.container.style}>Hi there</div>;
+  return (
+    <Routes>
+      <Route index element={<LoginPage />} />
+    </Routes>
+  );
 };
