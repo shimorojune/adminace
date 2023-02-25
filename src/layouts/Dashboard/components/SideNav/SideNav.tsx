@@ -1,98 +1,148 @@
+import { Icon } from "@iconify/react";
 import {
+  Collapse,
   Drawer,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Link,
+  PaperProps,
   SxProps,
   Theme,
-  PaperProps,
 } from "@mui/material";
-import { Icon } from "@iconify/react";
+import { useNavigate } from "react-router-dom";
 import { I8nAndMessageProps } from "types/commonTypes";
 import { useTranslatedString } from "utils/hooks/useTranslatedString";
-
-interface SideNavProps {}
+import { routes } from "utils/routes";
 
 interface SideNavDataItem {
   id: string;
   title: I8nAndMessageProps;
   selected: boolean;
-  iconKey: string;
+  iconKey?: string;
+  path: string;
+  children?: (Omit<SideNavDataItem, "children" | "iconKey"> &
+    Required<Pick<SideNavDataItem, "iconKey">>)[];
 }
 
 const sideNavData: SideNavDataItem[] = [
-  {
-    id: "snacks",
-    title: {
-      i8nKey: "I18N_SNACKS",
-    },
-    selected: true,
-    iconKey: "material-symbols:food-bank-rounded",
-  },
-  {
-    id: "stationary",
-    title: {
-      i8nKey: "I18N_STATIONARY",
-    },
-    selected: false,
-    iconKey: "mdi:pencil-ruler",
-  },
   {
     id: "admin-panel",
     title: {
       i8nKey: "I18N_ADMIN_PANEL",
     },
     selected: false,
+    path: routes.DASHBOARD_ADMIN_PROFILES.navigatePath,
     iconKey: "material-symbols:admin-panel-settings",
+    children: [
+      {
+        id: "profiles",
+        title: {
+          i8nKey: "I18N_PROFILES",
+        },
+        selected: false,
+        path: routes.DASHBOARD_ADMIN_PROFILES.navigatePath,
+        iconKey: "fluent:folder-people-20-filled",
+      },
+      {
+        id: "employees",
+        title: {
+          i8nKey: "I18N_EMPLOYEES",
+        },
+        selected: false,
+        path: routes.DASHBOARD_ADMIN_EMPLOYEES.navigatePath,
+        iconKey: "mdi:users-group",
+      },
+      {
+        id: "templates",
+        title: {
+          i8nKey: "I18N_TEMPLATES",
+        },
+        selected: false,
+        path: routes.DASHBOARD_ADMIN_TEMPLATES.navigatePath,
+        iconKey: "tabler:template",
+      },
+    ],
   },
 ];
 
-interface SideNavListProps {}
+const SideNavList = () => {
+  // HOOKS
+  const navigate = useNavigate();
 
-const SideNavList = (props: SideNavListProps) => {
-  // PROPS
-  const {} = props;
+  // HANDLERS
+  const onClickHandler = (path: string) => {
+    navigate(path);
+  };
 
   // DRAW
   return (
     <List>
       {sideNavData.map((sideNavDataItem) => {
         // DATA
-        const { id, title, iconKey, selected } = sideNavDataItem;
+        const { id, title, selected, children, path } = sideNavDataItem;
 
         // VARIABLES
         const titleString = useTranslatedString(title);
 
+        // HANDLERS
+
         // DRAW
         return (
-          <ListItem key={id} disablePadding>
-            <ListItemButton
-              component="a"
-              href="/dashboard"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-              selected={selected}
-            >
-              <ListItemIcon>
-                <Icon icon={iconKey} height={30} />
-              </ListItemIcon>
-              <ListItemText primary={titleString} />
-            </ListItemButton>
-          </ListItem>
+          <>
+            <ListItem key={id} disablePadding>
+              <ListItemButton
+                component="a"
+                href="/dashboard"
+                onClick={() => onClickHandler(path)}
+                selected={selected}
+              >
+                <ListItemText primary={titleString} />
+              </ListItemButton>
+            </ListItem>
+            {!!children ? (
+              <Collapse in={true} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  {children.map((childItem) => {
+                    // DATA
+                    const {
+                      iconKey: childIconKey,
+                      id: childId,
+                      selected: childSelected,
+                      title: childTitle,
+                      path: childPath,
+                    } = childItem;
+
+                    // VARIABLES
+                    const childTitleString = useTranslatedString(childTitle);
+
+                    // DRAW
+                    return (
+                      <ListItemButton
+                        key={childId}
+                        sx={{ pl: 4 }}
+                        onClick={() => onClickHandler(childPath)}
+                        selected={childSelected}
+                      >
+                        <ListItemIcon>
+                          <Icon icon={childIconKey} height={30} />
+                        </ListItemIcon>
+                        <ListItemText primary={childTitleString} />
+                      </ListItemButton>
+                    );
+                  })}
+                </List>
+              </Collapse>
+            ) : null}
+          </>
         );
       })}
     </List>
   );
 };
 
-export const SideNav = (props: SideNavProps) => {
-  // PROPS
-  const {} = props;
-
+export const SideNav = () => {
   // COMPONENT PROPS
   const drawerSX: SxProps<Theme> = {
     width: "100%",
