@@ -9,7 +9,7 @@ interface Tab {
   content: ReactElement;
 }
 
-interface BottomTabsLayoutProps {
+export interface BottomTabsLayoutProps {
   tabs: Tab[];
 }
 
